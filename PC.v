@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module PC(input clk,input rst, 
 	input [31:0]jump_address,
 	input[31:0] alu_ou_result,
@@ -18,9 +20,9 @@ module PC(input clk,input rst,
 		else begin
 			if(pcwrite)begin
 				case(pc_source)
-					00:pc_out<=pc_out+1;
-					01:pc_out<=alu_ou_result;
-					10:pc_out<=jump_address;
+					2'b00:pc_out<=pc_out+1;
+					2'b01:pc_out<=alu_ou_result;
+					2'b10:pc_out<=jump_address;
 					default:pc_out<=alu_result;
 				endcase
 			end
