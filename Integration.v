@@ -50,8 +50,8 @@ PC pc (
     );
 memory mem (
     .pc_address(pc_out), 
-    .alu_address(alu_ou_result), 
-    .data_in(B_out), 
+    .alu_address(rd), 
+    .data_in(alu_ou_result), 
     .data_out(data_out), 
     .clk(clk), 
     .rst(rst), 
@@ -143,6 +143,7 @@ memory mem (
 	ALU alu (
     .alu_result(alu_result), 
     .zero(zero), 
+	 .clk(clk),
     .inputA(A_out), 
     .inputB(B_out), 
     .signextend(signextend), 
