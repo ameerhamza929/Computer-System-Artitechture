@@ -30,21 +30,21 @@ module Registers( input clk,input rst,
 		end
 	end
 	
-	always@(*)begin
+	always@(posedge clk)begin
 		if(regwrite)begin
 			if(regdst)begin
 				if(memtoreg)begin
-					register[rd]=mdr_result;
+					register[rd]<=mdr_result;
 				end
 				else
-					register[rd]=alu_ou_result;
+					register[rd]<=alu_ou_result;
 			end
 			else begin
 				if(memtoreg)begin
-					register[rt]=mdr_result;
+					register[rt]<=mdr_result;
 				end
 				else
-					register[rt]=alu_ou_result;
+					register[rt]<=alu_ou_result;
 			end
 		end
 	end
