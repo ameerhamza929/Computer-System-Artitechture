@@ -1,6 +1,7 @@
-module ALU(alu_result,zero,inputA,inputB,signextend,pc,alu_control,alu_src_A,alu_src_B);
+module ALU(alu_result,zero,clk,inputA,inputB,signextend,pc,alu_control,alu_src_A,alu_src_B);
   output reg [31:0] alu_result;
   output reg zero;
+  input clk;
   input wire [31:0] inputA,inputB;
   input wire [31:0] signextend;
   input wire [31:0]pc;
@@ -29,7 +30,7 @@ module ALU(alu_result,zero,inputA,inputB,signextend,pc,alu_control,alu_src_A,alu
 	endcase	
   end
 
-  always @(alu_control,input1,input2)
+  always @(*)
       begin
           case (alu_control)
           4'b0010: alu_result = input1 + input2;//add
